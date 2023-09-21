@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} {{ username }} {% endblock %}</h1>
+    <form method="post" action="/users/?username={{ username }}" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        {% for key, value in dict.items(json_data[username]) %}
+            <div id="key">{{ key }}:</div><div id="params" >{{ value }} </div>
+            {% if key == "Comment " %}
+            <div>
+                {{ form.comment.label }} {{ form.comment() }}
+                <input type="submit" name="change_comment"  value="Change">
+            </div>
+            {% endif %}
+            {% if key == "Account active " %}
+            <div>
+                {{ form.status.label }} {{ form.status() }}
+                <input type="submit" name="change_status"  value="Change">
+            </div>
+            {% endif %}
+            <hr>
+        {% endfor %}
+        <div>
+            {{ form.reset_pass.label }} {{ form.reset_pass() }}
+            <input type="submit" name="reset_pass"  value="ResetPass">
+        </div>
+    </form>
+
+{% endblock %}

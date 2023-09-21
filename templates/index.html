@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Form for block</h1>
+	<form method="post" action="/" enctype="multipart/form-data">
+		{{ form.csrf_token }}
+		<div>
+		<p>{{ form.username.label }} {{ form.username() }}</p>
+		<p>{{ form.begin_date.label }} {{ form.begin_date() }}</p>
+		<p>{{ form.fin_date.label }} {{ form.fin_date() }}</p>
+		<p>{{ form.message.label }} {{ form.message() }}</p>
+		<input type="submit" value="Submit">
+		</div>
+	</form>
+{% endblock %}
