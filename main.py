@@ -194,10 +194,6 @@ def users():
                 status = form.status.data.lower()
                 os.system(f'net user {username} /active:"{status}"')
                 return f'<h1>Status: "{status}" for User: {username} is submitted successfully!! </h1>'
-            elif request.form.get("reset_pass") == "Change":
-                reset_pass = form.reset_pass.data
-                os.system(f'start notepad.exe')
-                return f'<h1>Pass: "{reset_pass}" is submitted successfully!! </h1>'
             elif request.form.get("reset_pass") == "ResetPass":
                 reset_pass = form.reset_pass.data
                 os.system(f'start notepad.exe')
